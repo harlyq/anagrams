@@ -1,0 +1,18 @@
+{
+  "language": "en-US",
+  "background_color": "purple",
+  "description": "Solve anagrams in a two dimensional grid",
+  "display": "standalone",
+  "icons": [{
+    "src": "image/anagram2d_192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },{
+    "src": "image/anagram2d_512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "name": "2D Anagrams",
+  "short_name": "Anagram2D",
+  "start_url": "/"
+}

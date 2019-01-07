@@ -1,0 +1,18 @@
+{
+  "name": "anagrams",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.html",
+  "files": ["dist", "data"],
+  "dependencies": {
+    "@types/node": "^10.12.17",
+    "hyperhtml": "2.23.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dist": "browserify temp/viewer.js -o dist/anagram.js && browserify temp/builderworker.js -o dist/builderworker.js && cp temp/serviceworker.js dist/ && cp -r app/* dist/ && cp data/words.txt dist/",
+    "server": "cd dist && http-server -p 5500"
+  },
+  "author": "",
+  "license": "MIT"
+}
