@@ -2313,7 +2313,7 @@ const util = require("./util");
 const hyperhtml_1 = require("hyperhtml");
 window.addEventListener('load', () => {
     if (navigator && navigator.serviceWorker) {
-        navigator.serviceWorker.register('serviceworker.js', { scope: '/' })
+        navigator.serviceWorker.register('serviceworker.js')
             .then(registration => {
             console.log('service worker registered', registration.scope);
         }, err => {
@@ -2673,7 +2673,6 @@ function anagramBuilder(node) {
     @media (max-width: 640px) {
       .letter {
         font-size: 4.2vmin;
-        background-color: yellow;
       }
       .navigation {
         width: 100%;

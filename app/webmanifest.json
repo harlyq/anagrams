@@ -14,5 +14,5 @@
   }],
   "name": "2D Anagrams",
   "short_name": "Anagram2D",
-  "start_url": "/"
+  "start_url": "index.html"
 }

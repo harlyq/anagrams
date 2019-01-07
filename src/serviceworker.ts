@@ -3,16 +3,15 @@ self.addEventListener('install', (e: any) => e.waitUntil(installServiceWorker))
 const installServiceWorker = async () => {
   const cache = await caches.open('anagrams-cache-v1')
   return await cache.addAll([
-    '/',
-    '/index.html',
-    '/favicon.ico',
-    '/image/anagram2d_192x192.png',
-    '/image/anagram2d_512x512.png',
-    '/image/safari-pinned-tab.svg',
-    '/anagram.js',
-    '/buildworker.js',
+    'index.html',
+    'favicon.ico',
+    'image/anagram2d_192x192.png',
+    'image/anagram2d_512x512.png',
+    'image/safari-pinned-tab.svg',
+    'anagram.js',
+    'buildworker.js',
     //'/dist/serviceworker.js', don't cache the service worker??
-    '/words.txt',
+    'words.txt',
   ])
 }
 
