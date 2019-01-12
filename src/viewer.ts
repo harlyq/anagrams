@@ -2,7 +2,7 @@ import * as util from './util'
 import hyperHTML from 'hyperhtml'
 
 window.addEventListener('load', () => {
-  if (navigator && navigator.serviceWorker) {
+  if (navigator && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('serviceworker.js')
     .then(registration => {
       console.log('service worker registered', registration.scope)

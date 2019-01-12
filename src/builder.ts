@@ -99,7 +99,7 @@ export const buildPuzzle = (dictionary, wordCountGoal, maxWordSize, puzzleSeed) 
   let puzzle = Array.from({length: maxWordSize}, () => puzzleRow)
   let isValid = true
   let isFirstWord = true
-  let remainingAttempts = 20
+  let remainingAttempts = 100
   let usedWords = [] // to prevent the same word appearing twice
   
   while (remainingAttempts > 0 && (!isValid || (puzzleWordCount < wordCountGoal && maxWordSize >= MIN_WORD_SIZE))) {

@@ -2312,7 +2312,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const util = require("./util");
 const hyperhtml_1 = require("hyperhtml");
 window.addEventListener('load', () => {
-    if (navigator && navigator.serviceWorker) {
+    if (navigator && 'serviceWorker' in navigator) {
         navigator.serviceWorker.register('serviceworker.js')
             .then(registration => {
             console.log('service worker registered', registration.scope);
