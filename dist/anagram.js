@@ -2576,8 +2576,9 @@ function anagramBuilder(node) {
           ${line.split('').map((c, col) => {
                 const letterState = getLetterState(state.letterStates, { row, col });
                 const isSelected = state.select.row === row && state.select.col === col;
-                const showCompleted = c !== ' ' && state.mode === 'complete';
-                return hyperhtml_1.default.wire() `<div class=${"letter " + letterState + (isSelected ? " selected" : "") + (showCompleted ? " resolved" : "")}>${c.toUpperCase()}</div>`;
+                const isBlank = c === ' ';
+                const showCompleted = !isBlank && state.mode === 'complete';
+                return hyperhtml_1.default.wire() `<div class=${"letter " + letterState + (isSelected ? " selected" : "") + (showCompleted ? " resolved" : "") + (isHintMode && !isBlank ? " hint" : "")}>${c.toUpperCase()}</div>`;
             })}
         </div>`;
         })}
@@ -2621,25 +2622,24 @@ function anagramBuilder(node) {
       justify-content: center;
       align-items: center;
     }
-    .letter.selected {
-      background-color: white;
-      color: black;
-      cursor: ew-resize;
-    }
     .letter.hint {
       color: white;
       background-color: black;
       cursor: help;
     }
-    .empty {
-      background-color: grey;
+    .letter.selected {
+      background-color: white;
+      color: black;
     }
-    .pinned {
+    .letter.pinned {
       background-color: orange;
     }
-    .resolved {
+    .letter.resolved {
       background-color: lightblue;
       color: black;
+    }
+    .empty {
+      background-color: grey;
     }
     .puzzlerow {
       display: flex;
@@ -2648,7 +2648,7 @@ function anagramBuilder(node) {
     .puzzlerow.selected {
       background-color: black;
       color: white;
-      cursor: help;
+      cursor: ew-resize;
     }
     .difficultyrow {
       display: flex;
