@@ -29,7 +29,7 @@ function anagramBuilder(node) {
     version: 2,
     page: 1,
     difficulty: 'small' as 'small' | 'medium' | 'large',
-    mode: 'normal' as 'normal' | 'hint' | 'complete' | 'loading',
+    mode: 'normal' as 'normal' | 'hint' | 'complete' | 'loading' | 'pin',
     solution: [] as string[],
     puzzle: [] as string[],
     letterStates: [] as ('empty' | 'pinned' | 'resolved' | 'none')[][],
@@ -200,17 +200,22 @@ function anagramBuilder(node) {
         }
 
       case 'reset':
-        return { 
-          ...state, 
-          ...DEFAULT_UI_STATE, 
-          puzzle: shufflePuzzle(state.solution, undefined), // randomize each time
-          letterStates: getInitialLetterStates(state.solution),
-          completed: changeCompletedStatus(state.completed, state.difficulty, state.page, false),
-          mode: 'normal',
+        if (state.mode !== 'loading') {
+          return { 
+            ...state, 
+            ...DEFAULT_UI_STATE, 
+            puzzle: shufflePuzzle(state.solution, undefined), // randomize each time
+            letterStates: getInitialLetterStates(state.solution),
+            completed: changeCompletedStatus(state.completed, state.difficulty, state.page, false),
+            mode: 'normal',
+          }
+        } else {
+          return state
         }
 
-      case 'resolve-cell':
-        if (getLetterState(state.letterStates, action.cell) !== 'resolved') {
+      case 'resolve-cell': {
+        const currentLetterState = getLetterState(state.letterStates, action.cell)
+        if (currentLetterState !== 'resolved' && currentLetterState !== 'empty') {
           const correctLetter = getPuzzleCell(state.solution, action.cell)
           const lettersInRow = state.puzzle[action.cell.row].split('')
 
@@ -233,6 +238,7 @@ function anagramBuilder(node) {
           }
         }
         return state
+      }
 
       case 'setup': {
         const storedState = JSON.parse(localStorage.getItem("state"))
@@ -243,7 +249,11 @@ function anagramBuilder(node) {
         return { ...storedState, ...DEFAULT_UI_STATE }
       }
 
-      case 'toggle-pinned': {
+      case 'toggle-pin': {
+        return { ...state, ...DEFAULT_UI_STATE, mode: state.mode === 'pin' ? 'normal' : 'pin' }
+      }
+
+      case 'toggle-pin-letter': {
         const letterState = getLetterState(state.letterStates, action.cell)
         if (letterState === 'pinned' || letterState === 'none') {
           const newLetterState = letterState === 'pinned' ? 'none' : 'pinned'
@@ -279,14 +289,25 @@ function anagramBuilder(node) {
   }
 
   const onClickHint = (e) => dispatch({ type: 'toggle-hint' })
+  const onClickPin = (e) => dispatch({ type: 'toggle-pin' })
   const onClickReset = (e) => dispatch({ type: 'reset' })
   const onClickPrev = (e) => dispatch({ type: 'prev' })
   const onClickNext = (e) => dispatch({ type: 'next' })
-  const onClickDifficulty = (e) => dispatch({ type: 'difficulty', difficulty: e.target.dataset.difficulty })
+
+  const onClickDifficulty = (e) => {
+    dispatch({ type: 'difficulty', difficulty: e.target.dataset.difficulty })
+  }
+
   const onPointerDownHint = (e) => {
     const pointer = e.changedTouches ? e.changedTouches.item(0) : e
     dispatch({ type: 'resolve-cell', cell: xyToCell(puzzleEl, pointer.clientX, pointer.clientY, getPuzzleSize(state.puzzle)) })
   }
+
+  const onPointerDownPin = (e) => {
+    const pointer = e.changedTouches ? e.changedTouches.item(0) : e
+    dispatch({ type: 'toggle-pin-letter', cell: xyToCell(puzzleEl, pointer.clientX, pointer.clientY, getPuzzleSize(state.puzzle)) })
+  }
+
   const onMouseUpBody = (e) => {
     dispatch({ type: 'up' })
   }
@@ -297,7 +318,7 @@ function anagramBuilder(node) {
     const downTime = Date.now()
     const cell = xyToCell(puzzleEl, pointer.clientX, pointer.clientY, getPuzzleSize(state.puzzle))    
     if (state.lastDownTime + DOUBLE_DOWN_INTERVAL > downTime) {
-      dispatch({ type: 'toggle-pinned', cell })
+      dispatch({ type: 'toggle-pin-letter', cell })
     } else {
       dispatch({ type: 'down', cell, time: downTime })
     }
@@ -326,7 +347,9 @@ function anagramBuilder(node) {
   const render = (state) => {
     const isHintMode = state.mode === "hint"
     const isNormalMode = state.mode === "normal"
-    const isCompleteMode = state.mode === "complete"
+    const isPinMode = state.mode === "pin"
+    const isHintDisabled = state.mode === "complete" || state.mode === "loading"
+    const isPinDisabled = state.mode === "complete" || state.mode === "loading"
     const isSelectActive = state.select !== NO_SELECT
 
     // once the mouse is down, to read the position over the whole page we need to put the move and up handlers on the body
@@ -340,11 +363,12 @@ function anagramBuilder(node) {
     }
 
     puzzleEl = hyperHTML.wire()`<div 
-      class="puzzle" 
-      onmousedown=${isNormalMode ? onPointerDownPuzzle : isHintMode ? onPointerDownHint : undefined} 
-      ontouchstart=${isNormalMode ? onPointerDownPuzzle : isHintMode ? onPointerDownHint : undefined} 
+      class=${"puzzle "  + state.difficulty}
+      onmousedown=${isNormalMode ? onPointerDownPuzzle : isHintMode ? onPointerDownHint : isPinMode ? onPointerDownPin : undefined} 
+      ontouchstart=${isNormalMode ? onPointerDownPuzzle : isHintMode ? onPointerDownHint : isPinMode ? onPointerDownPin : undefined} 
       ontouchmove=${onTouchMovePuzzle}
       ontouchend=${onTouchEndPuzzle}>
+
       ${state.puzzle.map((line, row) => {
         const isRowSelected = state.dragMode && state.select.row === row
         return hyperHTML.wire()`<div class=${"puzzlerow" + (isRowSelected ? " selected" : "")}>
@@ -380,6 +404,15 @@ function anagramBuilder(node) {
       cursor: pointer;
       font-size: 30px;
     }
+    .puzzle.large {
+      font-size: 25px;
+    }
+    .puzzle.medium {
+      font-size: 31px;
+    }
+    .puzzle.small {
+      font-size: 42px;
+    }
     .anagram2d {
       width: 100%;
       display: flex;
@@ -408,7 +441,7 @@ function anagramBuilder(node) {
       cursor: help;
     }
     .letter.selected {
-      background-color: white;
+      background-color: lightgrey;
       color: black;
     }
     .letter.pinned {
@@ -435,6 +468,7 @@ function anagramBuilder(node) {
       align-self: flex-start;
     }
     .difficulty {
+      margin: 0 0 10px 0;
       padding: 5px 10px;
     }
     .selected {
@@ -449,10 +483,44 @@ function anagramBuilder(node) {
     }
     .command {
       margin: 0px 10px;
+      padding: 5px 10px;
+      height: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .smallerfont {
+      font-size: 0.8em;
+    }
+    #hint {
+      background-color: lightblue;
+    }
+    #hint.selected {
+      background-color: black;
+      color: white;
+    }
+    #hint.disabled {
+      background-color: transparent;
+    }
+    #pin {
+      background-color: orange;
+    }
+    #pin.selected {
+      background-color: black;
+      color: white;
+    }
+    #pin.disabled {
+      background-color: transparent;
     }
     @media (max-width: 640px) {
-      .letter {
-        font-size: 4.2vmin;
+      .puzzle.large {
+        font-size: 4.7vmin;
+      }
+      .puzzle.medium {
+        font-size: 6vmin;
+      }
+      .puzzle.small {
+        font-size: 7.8vmin;
       }
       .navigation {
         width: 100%;
@@ -463,13 +531,14 @@ function anagramBuilder(node) {
     <div class="anagram2d">
       ${difficultyEl}
       <div class="navigation">
-        <div class=${state.page === 1 ? "disabled" : ""} onclick=${onClickPrev}>&#8592; Previous</div>
+        <div class=${state.page === 1 ? "disabled" : ""} onclick=${onClickPrev}>< Previous</div>
         <div>Puzzle # ${state.page}</div>
-        <div onclick=${onClickNext}>Next &#8594;</div>
+        <div onclick=${onClickNext}>Next ></div>
       </div>
       <div class="commandrow">
         <div class="command" onclick=${onClickReset}>&#9842; RESET  </div>
-        <div class=${"command" + (isHintMode ? " selected" : (isCompleteMode ? " disabled" : ""))} onclick=${onClickHint}>&#63; HINT  </div>
+        <div id="hint" class=${"command" + (isHintMode ? " selected" : (isHintDisabled ? " disabled" : ""))} onclick=${onClickHint}>&#63; HINT  </div>
+        <div id="pin" class=${"command" + (isPinMode ? " selected" : (isPinDisabled ? " disabled" : ""))} onclick=${onClickPin}><span class="smallerfont">&#128204;</span> PIN  </div>
       </div>
       ${puzzleEl}
     </div>
