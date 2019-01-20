@@ -349,7 +349,6 @@ ascend
 ascertain
 ash
 ashamed
-ashes
 ashore
 aside
 ask
@@ -408,7 +407,6 @@ audition
 aunt
 austerity
 author
-authorities
 authority
 authorized
 auto
@@ -3374,7 +3372,6 @@ kneel
 knew
 knife
 knight
-knives
 knock
 knot
 know
@@ -4234,7 +4231,6 @@ pamper
 pan
 pancake
 panic
-panties
 pants
 paper
 paperwork
@@ -4517,7 +4513,6 @@ postman
 postpone
 pot
 potato
-potatoes
 potent
 potential
 potion
@@ -6545,7 +6540,6 @@ wireless
 wisdom
 wise
 wish
-wishes
 wit
 witch
 witchcraft
@@ -6557,7 +6551,6 @@ within
 without
 witness
 witty
-wives
 wizard
 woke
 wolf
@@ -6581,7 +6574,6 @@ world
 worldwide
 worm
 worn
-worries
 worry
 worrying
 worse
@@ -6626,7 +6618,6 @@ youngest
 youngster
 your
 yourself
-yourselves
 youth
 yummy
 zero

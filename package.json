@@ -10,7 +10,8 @@
   "devDependencies": {},
   "scripts": {
     "dist": "tsc && browserify temp/viewer.js -o dist/anagram.js && browserify temp/builderworker.js -o dist/builderworker.js && cp temp/serviceworker.js dist/ && cp -r app/* dist/ && cp data/words.txt dist/",
-    "server": "cd .. && http-server -p 5500"
+    "server": "cd .. && http-server -p 5500",
+    "makewords": "cd data && node makewords"
   },
   "author": "",
   "license": "MIT"

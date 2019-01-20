@@ -2331,7 +2331,7 @@ function anagramBuilder(node) {
         dragMode: false,
         lastDownTime: 0
     };
-    const INITIAL_STATE = Object.assign({ version: 2, page: 1, difficulty: 'small', mode: 'normal', solution: [], puzzle: [], letterStates: [], completed: { small: [], medium: [], large: [] } }, DEFAULT_UI_STATE);
+    const INITIAL_STATE = Object.assign({ version: 3, page: 1, difficulty: 'small', mode: 'normal', solution: [], puzzle: [], letterStates: [], completed: { small: [], medium: [], large: [] } }, DEFAULT_UI_STATE);
     const WORD_GOAL = { 'small': 6, 'medium': 12, 'large': 100 };
     const PUZZLE_SIZE = { 'small': 6, 'medium': 8, 'large': 10 };
     let puzzleEl;
@@ -2409,21 +2409,63 @@ function anagramBuilder(node) {
         }
         return letterStates.map((list, row) => row !== cell.row ? list : list.map((state, col) => col !== cell.col ? state : newState));
     };
-    const changeCompletedStatus = (completed, difficulty, page, isComplete) => {
-        const pageIndex = completed[difficulty].indexOf(page);
-        if (!isComplete && pageIndex !== -1) {
-            return Object.assign({}, completed, { [difficulty]: completed[difficulty].filter((_, i) => i !== pageIndex) });
+    // returns -1 if the sortedList is empty
+    const indexOfClosestLowerValue = (sortedList, v) => {
+        let i = -1;
+        while (i + 1 < sortedList.length && v >= sortedList[i + 1]) {
+            i++;
         }
-        else if (isComplete && pageIndex === -1) {
-            return Object.assign({}, completed, { [difficulty]: completed[difficulty].concat(page) });
+        return i;
+    };
+    // compress the status into the new format
+    const completedV2toV3 = (completed) => {
+        let newCompleted = { small: [], medium: [], large: [] };
+        for (let difficulty in completed) {
+            for (let page of completed[difficulty]) {
+                newCompleted = changeCompletedStatus(newCompleted, difficulty, page, true);
+            }
+        }
+        return newCompleted;
+    };
+    // generally the players will complete puzzles sequentially, occasionally skipping a difficult
+    // puzzle. Rather than storing a list of completed puzzles, which can get into the thousands, we
+    // represent the list as an alternating sequence of completed and uncompleted indices
+    // e.g. if we've completed 3,7,8,9,10 then the list becomes
+    // [3,4,7,11] so incomplete below 3, complete from 3 to 4-1, incomplete from 4 to 7-1, complete from 7 to 11-1
+    //
+    // thus the 0th, 2nd, 4th, ... indices represent the start of complete sequences and
+    // 1st, 3rd, 5th, ... indices represent the beginning of incomplete squences
+    // the last number will always represent the last completed puzzle + 1
+    const changeCompletedStatus = (completed, difficulty, page, isComplete) => {
+        const i = indexOfClosestLowerValue(completed[difficulty], page);
+        const wasComplete = i >= 0 ? (i % 2 === 0 ? true : false) : false;
+        if (wasComplete !== isComplete) {
+            let newCompleted = completed[difficulty].slice();
+            newCompleted.splice(i + 1, 0, page, page + 1);
+            if (newCompleted.length > 1) {
+                const n = newCompleted.length;
+                newCompleted = newCompleted.filter((x, i, list) => (i === 0 || x !== list[i - 1]) && (i === n - 1 || x !== list[i + 1])); // strip duplicates
+            }
+            return Object.assign({}, completed, { [difficulty]: newCompleted });
         }
         return completed;
     };
+    // console.log(changeCompletedStatus({small:[]}, 'small', 1, true))
+    // console.log(changeCompletedStatus({small:[1,2]}, 'small', 1, true))
+    // console.log(changeCompletedStatus({small:[1,2]}, 'small', 2, true))
+    // console.log(changeCompletedStatus({small:[2,5]}, 'small', 1, true))
+    // console.log(changeCompletedStatus({small:[2,5]}, 'small', 10, true))
+    // console.log(changeCompletedStatus({small:[1,3]}, 'small', 2, false))
+    // console.log(changeCompletedStatus({small:[1,10]}, 'small', 2, false))
+    // console.log(changeCompletedStatus({small:[1,2]}, 'small', 1, false))
     const isCompleted = (completed, difficulty, page) => {
-        return completed[difficulty].includes(page);
+        const i = indexOfClosestLowerValue(completed[difficulty], page);
+        return i >= 0 ? (i % 2 === 0 ? true : false) : false;
     };
+    // returns 1 if none are completed
     const getLastCompleted = (completed, difficulty) => {
-        return completed[difficulty].length > 0 ? Math.max(...completed[difficulty]) : 1;
+        const n = completed[difficulty].length;
+        return n > 0 ? completed[difficulty][n - 1] - 1 : 1;
     };
     const getLetterState = (letterStates, cell) => {
         return letterStates[cell.row][cell.col];
@@ -2490,7 +2532,12 @@ function anagramBuilder(node) {
             case 'setup': {
                 const storedState = JSON.parse(localStorage.getItem("state"));
                 if (!storedState || storedState.version !== INITIAL_STATE.version) {
-                    createPuzzle(state.page, state.difficulty);
+                    if (storedState.version === 2) {
+                        return Object.assign({}, storedState, DEFAULT_UI_STATE, { completed: completedV2toV3(storedState.completed) });
+                    }
+                    else {
+                        createPuzzle(state.page, state.difficulty);
+                    }
                     return state;
                 }
                 return Object.assign({}, storedState, DEFAULT_UI_STATE);

@@ -13,6 +13,7 @@ const words = data.split('\n').reduce((r,x) => {
 const sowpods = fs.readFileSync('sowpods.txt', 'utf8').split('\n')
 const vulgar = fs.readFileSync('vulgar.txt', 'utf8').split('\n')
 const sexual = fs.readFileSync('sexual.txt', 'utf8').split('\n')
+const extraPluralsToSkip = ["ashes", "authorities", "knives", "potatoes", "wishes", "wives", "worries", "yourselves"]
 
 const sortedVulgar = vulgar.slice().sort()
 const sortedSexual = sexual.slice().sort()
@@ -22,7 +23,7 @@ console.log("sexual.txt out of order", sortedSexual.find((word,i) => word !== se
 
 const uniqueWords = words.sort().filter((x,i,list) => x !== list[i-1])
 const safeWords = uniqueWords.filter(word => binarySearch(sowpods, word) >= 0 && binarySearch(vulgar, word) === -1 && binarySearch(sexual, word) === -1)
-const noPlurals = safeWords.filter(word => word[word.length - 1] !== 's' || binarySearch(safeWords, word.slice(0,-1)) === -1)
+const noPlurals = safeWords.filter(word => word[word.length - 1] !== 's' || (binarySearch(safeWords, word.slice(0,-1)) === -1 && !extraPluralsToSkip.includes(word)))
 
 uniqueWords.forEach(word => {
   if (binarySearch(noPlurals, word) === -1) console.log("removed", word)
