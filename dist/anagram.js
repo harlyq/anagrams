@@ -2533,7 +2533,7 @@ function anagramBuilder(node) {
                 const storedState = JSON.parse(localStorage.getItem("state"));
                 if (!storedState || storedState.version !== INITIAL_STATE.version) {
                     if (storedState.version === 2) {
-                        return Object.assign({}, storedState, DEFAULT_UI_STATE, { completed: completedV2toV3(storedState.completed) });
+                        return Object.assign({}, storedState, DEFAULT_UI_STATE, { completed: completedV2toV3(storedState.completed), version: INITIAL_STATE.version });
                     }
                     else {
                         createPuzzle(state.page, state.difficulty);
