@@ -2419,6 +2419,12 @@ function anagramBuilder(node) {
         }
         return completed;
     };
+    const isCompleted = (completed, difficulty, page) => {
+        return completed[difficulty].includes(page);
+    };
+    const getLastCompleted = (completed, difficulty) => {
+        return completed[difficulty].length > 0 ? Math.max(...completed[difficulty]) : 1;
+    };
     const getLetterState = (letterStates, cell) => {
         return letterStates[cell.row][cell.col];
     };
@@ -2426,7 +2432,7 @@ function anagramBuilder(node) {
         switch (action.type) {
             case 'difficulty':
                 if (action.difficulty !== state.difficulty) {
-                    const lastPage = state.completed[action.difficulty].length > 0 ? Math.max(...state.completed[action.difficulty]) : 1;
+                    const lastPage = getLastCompleted(state.completed, action.difficulty);
                     createPuzzle(lastPage, action.difficulty);
                     return Object.assign({}, state, DEFAULT_UI_STATE, { puzzle: [], letterStates: [], difficulty: action.difficulty, mode: 'normal', page: lastPage });
                 }
@@ -2454,7 +2460,7 @@ function anagramBuilder(node) {
                 createPuzzle(state.page - 1, state.difficulty);
                 return Object.assign({}, state, DEFAULT_UI_STATE, { puzzle: [], letterStates: [], page: state.page - 1, mode: 'loading' });
             case 'puzzle-built':
-                const isPuzzleComplete = state.completed[state.difficulty].includes(state.page);
+                const isPuzzleComplete = isCompleted(state.completed, state.difficulty, state.page);
                 return Object.assign({}, state, DEFAULT_UI_STATE, { solution: action.puzzle, puzzle: isPuzzleComplete ? action.puzzle : shufflePuzzle(action.puzzle, state.page), letterStates: getInitialLetterStates(action.puzzle), mode: isPuzzleComplete ? 'complete' : 'normal' });
             case 'reset':
                 if (state.mode !== 'loading') {

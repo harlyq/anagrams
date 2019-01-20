@@ -138,15 +138,23 @@ function anagramBuilder(node) {
     return completed
   }
 
+  const isCompleted = (completed, difficulty, page) => {
+    return completed[difficulty].includes(page) 
+  }
+
+  const getLastCompleted = (completed, difficulty) => {
+    return completed[difficulty].length > 0 ? Math.max(...completed[difficulty]) : 1
+  }
+
   const getLetterState = (letterStates, cell) => {
     return letterStates[cell.row][cell.col]
   }
 
-  const reducer = (state = INITIAL_STATE, action) => {
+  const reducer = (state: typeof INITIAL_STATE = INITIAL_STATE, action): typeof INITIAL_STATE => {
     switch (action.type) {
       case 'difficulty': 
         if (action.difficulty !== state.difficulty) {
-          const lastPage = state.completed[action.difficulty].length > 0 ? Math.max(...state.completed[action.difficulty]) : 1
+          const lastPage = getLastCompleted(state.completed, action.difficulty)
           createPuzzle(lastPage, action.difficulty);
           return { ...state, ...DEFAULT_UI_STATE, puzzle: [], letterStates: [], difficulty: action.difficulty, mode: 'normal', page: lastPage }
         }
@@ -189,7 +197,7 @@ function anagramBuilder(node) {
         return { ...state, ...DEFAULT_UI_STATE, puzzle: [], letterStates: [], page: state.page - 1, mode: 'loading' }
 
       case 'puzzle-built': 
-        const isPuzzleComplete = state.completed[state.difficulty].includes(state.page) 
+        const isPuzzleComplete = isCompleted(state.completed, state.difficulty, state.page)
         return { 
           ...state, 
           ...DEFAULT_UI_STATE, 
