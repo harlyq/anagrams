@@ -297,7 +297,7 @@ function anagramBuilder(node) {
       case 'setup': {
         const storedState = JSON.parse(localStorage.getItem("state"))
         if (!storedState || storedState.version !== INITIAL_STATE.version) {
-          if (storedState.version === 2) {
+          if (storedState && 'version' in storedState && storedState.version === 2) {
             return { ...storedState, ...DEFAULT_UI_STATE, completed: completedV2toV3(storedState.completed), version: INITIAL_STATE.version }
           } else {
             createPuzzle(state.page, state.difficulty)

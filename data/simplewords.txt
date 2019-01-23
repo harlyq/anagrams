@@ -1003,7 +1003,7 @@ aggravation
 Archaic
 pertinent
 rid
-defense
+defence
 planning
 flight
 honestly
@@ -1189,7 +1189,6 @@ staff
 planet
 duty
 loud
-practice
 bright
 army
 warning
@@ -1242,7 +1241,7 @@ bomb
 bout
 television
 harmony
-color
+colour
 schedule
 capable
 master
@@ -1286,7 +1285,7 @@ character
 became
 enemy
 crash
-recognize
+recognise
 healthy
 boring
 feed
@@ -1315,7 +1314,6 @@ trade
 thanksgiving
 revenge
 available
-program
 prefer
 spare
 pray
@@ -1352,7 +1350,6 @@ lousy
 circumstance
 stage
 weak
-license
 nothing
 community
 trash
@@ -2164,7 +2161,7 @@ secure
 spit
 pilot
 penny
-offense
+offence
 dust
 conscience
 invitation
@@ -2749,7 +2746,7 @@ initiative
 innovation
 input 
 inquiry
-install
+instal
 instance
 instant
 instruction
@@ -2786,8 +2783,8 @@ opposition
 ordinary
 organ
 organic
-organization
-organize
+organisation
+organise
 origin
 originally
 outcome
@@ -2955,7 +2952,7 @@ tendency
 tent
 tidy
 tin
-ton
+tonne
 trend
 tricky
 tune
@@ -3057,7 +3054,7 @@ murderer
 technically
 cave
 performance
-gram
+gramme
 touching
 committee
 consequence
@@ -3074,7 +3071,6 @@ hallway
 popcorn
 makeup
 madam
-jean
 cowboy
 blackmail
 concept
@@ -3089,7 +3085,7 @@ furious
 cheat
 approve
 drawer
-phony
+phoney
 joining
 interfere
 governor
@@ -3197,7 +3193,7 @@ honoured
 specifically
 exam
 convenient
-traveling
+travelling
 laying
 crystal
 apply
@@ -3227,7 +3223,7 @@ constant
 bench
 moron
 impress
-gray
+grey
 entitled
 connect
 needle
@@ -3364,7 +3360,7 @@ pancake
 harsh
 existence
 troubles
-favorite
+favourite
 driven
 chin
 rage
@@ -3514,7 +3510,7 @@ journal
 risky
 nest
 honourable
-favor
+favour
 culture
 closest
 breakdown
@@ -3633,7 +3629,7 @@ rational
 passport
 dip
 advanced
-tumor
+tumour
 humiliated
 destruction
 banana
@@ -3932,7 +3928,7 @@ daisy
 coffeehouse
 chess
 betrayal
-apologizing
+apologising
 whipped
 reminder
 fame
@@ -3963,7 +3959,7 @@ counselling
 wit
 technical
 puppet
-modeling
+modelling
 irresponsible
 humiliation
 felony
@@ -4511,14 +4507,14 @@ Celsius
 censor
 centigrade
 chalk
-characterize
+characterise
 chilly
 chimney
 chore
 circuit 
 civilian
-civilization
-civilize
+civilisation
+civilise
 clap
 clarify
 clash
@@ -4545,7 +4541,7 @@ colonel
 colonialism
 colonist
 colony
-colorful
+colourful
 columnist 
 comb
 comma 
@@ -4605,7 +4601,7 @@ eyelash
 faraway
 fatality
 fatigue
-favorable
+favourable
 fearful
 February 
 fertile
@@ -4633,8 +4629,8 @@ gasp
 gave
 gaze
 gel
-generalization
-generalize
+generalisation
+generalise
 generic
 geography
 geometry
@@ -4667,7 +4663,7 @@ humidity
 humorous
 hut 
 hydrogen
-hypnotize
+hypnotise
 idiom
 ignorant
 illiterate
@@ -5082,7 +5078,7 @@ disorder
 chancellor
 subway
 republican
-paralyzed
+paralysed
 dental
 corporation
 cherish
@@ -5216,7 +5212,7 @@ senate
 fiction
 exotic
 demonic
-colored
+coloured
 clearing
 brook
 boutique
@@ -5344,7 +5340,7 @@ specialty
 snoop
 semi
 leverage
-jeopardize
+jeopardise
 janitor
 examination
 compact
@@ -5770,7 +5766,7 @@ chopped
 bridal
 bedside
 babysitting
-authorized
+authorised
 assumption
 youngest
 witty
@@ -5920,7 +5916,7 @@ copper
 sensitivity
 prophecy
 immortal
-colorless
+colourless
 asking
 demonstrate
 acquaintance
@@ -6025,11 +6021,11 @@ considerable
 tuition
 godmother
 crude
-criticize
+criticise
 whichever
 correction
 incentive
-yogurt
+yoghurt
 submarine
 startle
 interpretation
@@ -6055,10 +6051,10 @@ smuggle
 salty
 morbid
 licence
-defenseless
+defenceless
 cradle
 booking
-traumatize
+traumatise
 muddy
 grapefruit
 bossy
@@ -6218,13 +6214,13 @@ prestige
 punctuation 
 quarrel
 raffle
-rationalize
+rationalise
 relay 
 rim
 rugby
 scallop
 spank
-specialize
+specialise
 stereotype
 complement 
 completely
@@ -6811,7 +6807,7 @@ mayonnaise
 measles
 mediate
 melancholy
-minimize
+minimise
 miscalculate
 mischief
 misty

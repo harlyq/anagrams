@@ -140,7 +140,7 @@ const builder = require("./builder");
 const util = require("./util");
 let dictionary;
 let lastMessage;
-fetch('words.txt')
+fetch('en-us.txt')
     .then(response => response.text())
     .then(data => {
     dictionary = util.createDictionary(data.split('\n'));

@@ -4,7 +4,7 @@ import * as util from './util'
 let dictionary
 let lastMessage
 
-fetch('words.txt')
+fetch('en-us.txt')
   .then(response => response.text())
   .then(data => {
     dictionary = util.createDictionary(data.split('\n'))

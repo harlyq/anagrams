@@ -115,7 +115,6 @@ advertising
 advice
 advise
 advisor
-aesthetic
 affability
 affair
 affect
@@ -191,7 +190,7 @@ alternative
 although
 altitude
 altogether
-aluminium
+aluminum
 always
 am
 amass
@@ -221,7 +220,6 @@ amuse
 amusement
 amusing
 an
-anaemia
 analogy
 analysis
 analyze
@@ -230,6 +228,7 @@ ancestor
 anchor
 ancient
 and
+anemia
 anew
 angel
 anger
@@ -274,7 +273,7 @@ anywhere
 apart
 apartment
 apathetic
-apologise
+apologize
 apologizing
 apology
 apostle
@@ -434,7 +433,7 @@ awful
 awfully
 awhile
 awkward
-axe
+ax
 babble
 baby
 babysitting
@@ -927,7 +926,7 @@ castle
 casual
 casualty
 cat
-catalogue
+catalog
 cataract
 catastrophe
 catch
@@ -963,11 +962,11 @@ censor
 census
 cent
 center
+center
 centered
 centigrade
 centimeter
 central
-centre
 century
 ceremony
 certain
@@ -1010,6 +1009,7 @@ cheap
 cheat
 cheating
 check
+check
 cheek
 cheer
 cheering
@@ -1019,7 +1019,6 @@ cheesy
 chef
 chemist
 chemistry
-cheque
 cherish
 cherry
 chess
@@ -1069,7 +1068,7 @@ citizen
 city
 civil
 civilian
-civilization
+civilisation
 civilize
 clad
 claim
@@ -1270,6 +1269,7 @@ condensed
 condition
 condo
 condolences
+condom
 conduct
 conductor
 cone
@@ -1417,7 +1417,6 @@ cosmetics
 cosmopolitan
 cost
 costume
-cosy
 cottage
 cotton
 couch
@@ -1425,8 +1424,8 @@ cough
 could
 council
 counsel
-counselling
-counsellor
+counseling
+counselor
 count
 counter
 counterfeit
@@ -1453,6 +1452,7 @@ covering
 cow
 coward
 cowboy
+cozy
 cozy
 crab
 crack
@@ -1762,11 +1762,11 @@ diagnosis
 diagram
 dial
 dialect
-dialogue
+dialog
 diameter
 diamond
 diaper
-diarrhoea
+diarrhea
 diary
 dice
 dictate
@@ -1815,7 +1815,6 @@ disappointment
 disapproval
 disaster
 disbelief
-disc
 discard
 discharge
 disciple
@@ -1838,6 +1837,7 @@ disgraceful
 disgusting
 dish
 dishonest
+disk
 disk
 dismal
 dismiss
@@ -2075,7 +2075,7 @@ encourage
 encouragement
 encouraging
 encumbrance
-encyclopaedia
+encyclopedia
 end
 endless
 endorse
@@ -2131,6 +2131,7 @@ erase
 eraser
 erect
 erosion
+erotic
 err
 errand
 error
@@ -2147,6 +2148,7 @@ establish
 establishment
 estate
 esteem
+esthetic
 eternal
 eternity
 ethic
@@ -2247,6 +2249,7 @@ eye
 eyeball
 eyelash
 eyelid
+eyeshadow
 eyesight
 eyewitness
 fable
@@ -2338,7 +2341,7 @@ fetch
 fever
 few
 fibber
-fibre
+fiber
 fiction
 fiddle
 field
@@ -2350,9 +2353,9 @@ fight
 fighter
 figure
 file
+filet
 filing
 fill
-fillet
 filling
 film
 filth
@@ -2397,7 +2400,7 @@ flask
 flat
 flatten
 flatter
-flavour
+flavor
 flaw
 flea
 flee
@@ -2552,6 +2555,7 @@ fun
 fund
 fundamental
 funding
+fundraiser
 funeral
 funky
 funnel
@@ -2635,8 +2639,8 @@ given
 glacier
 glad
 gladly
+glamor
 glamorous
-glamour
 glance
 glass
 glasses
@@ -2665,6 +2669,7 @@ golf
 good
 goodbye
 goodness
+goodnight
 goody
 goose
 gorgeous
@@ -2792,7 +2797,7 @@ happy
 harass
 harassing
 harassment
-harbour
+harbor
 hard
 hardly
 hardware
@@ -2937,10 +2942,10 @@ honestly
 honesty
 honey
 honeymoon
+honor
+honorable
 honorary
-honour
-honourable
-honoured
+honored
 hood
 hook
 hooligan
@@ -2989,8 +2994,8 @@ humidity
 humiliate
 humiliated
 humiliation
+humor
 humorous
-humour
 hunch
 hundred
 hung
@@ -3184,7 +3189,7 @@ inspire
 inspiring
 install
 installation
-instalment
+installment
 instance
 instant
 instead
@@ -3226,6 +3231,7 @@ intermediate
 intern
 internal
 international
+internet
 interpretation
 interrogation
 interrupt
@@ -3296,7 +3302,7 @@ jay
 jazz
 jealous
 jealousy
-jean
+jeans
 jeep
 jelly
 jeopardize
@@ -3304,7 +3310,7 @@ jeopardy
 jersey
 jet
 jewel
-jewellery
+jewelry
 jinx
 job
 jockey
@@ -3319,7 +3325,7 @@ journey
 joy
 jubilee
 judge
-judgement
+judgment
 judicial
 jug
 juggle
@@ -3355,7 +3361,7 @@ kidnapping
 kidney
 kill
 killer
-kilometre
+kilometer
 kin
 kind
 kindergarten
@@ -3378,8 +3384,8 @@ know
 knowledge
 known
 label
+labor
 laboratory
-labour
 lace
 lack
 lad
@@ -3479,7 +3485,6 @@ libel
 liberal
 liberty
 library
-licence
 license
 lick
 lid
@@ -3522,10 +3527,10 @@ listed
 listen
 listener
 lit
+liter
 literally
 literary
 literature
-litre
 litter
 little
 live
@@ -3598,6 +3603,7 @@ lunchtime
 lung
 lure
 lurk
+lust
 luxury
 lying
 lyrical
@@ -3641,6 +3647,7 @@ manage
 management
 manager
 mandate
+maneuver
 manhood
 mania
 maniac
@@ -3649,7 +3656,6 @@ manipulative
 mankind
 manly
 manner
-manoeuvre
 manpower
 mansion
 manual
@@ -3679,7 +3685,7 @@ marry
 marsh
 marshal
 marvel
-marvellous
+marvelous
 mascara
 mask
 mass
@@ -3760,8 +3766,8 @@ metal
 metaphor
 meteor
 meter
+meter
 method
-metre
 metric
 metropolitan
 mice
@@ -3831,6 +3837,7 @@ modify
 module
 moist
 moisture
+mold
 molecular
 molecule
 mom
@@ -3877,12 +3884,10 @@ motor
 motorcycle
 motorway
 motto
-mould
 mount
 mountain
 mourning
 mouse
-moustache
 mouth
 move
 movement
@@ -3908,6 +3913,7 @@ music
 musical
 musician
 must
+mustache
 mustard
 mute
 mutton
@@ -3954,7 +3960,7 @@ needy
 negative
 neglect
 negotiate
-neighbour
+neighbor
 neither
 nephew
 nerve
@@ -4080,7 +4086,7 @@ occur
 ocean
 odd
 odious
-odour
+odor
 of
 off
 offend
@@ -4101,7 +4107,7 @@ old
 older
 oldest
 olive
-omelette
+omelet
 omission
 omit
 on
@@ -4231,6 +4237,7 @@ pamper
 pan
 pancake
 panic
+panties
 pants
 paper
 paperwork
@@ -4297,6 +4304,7 @@ pay
 payback
 payment
 payroll
+payslip
 pea
 peace
 peach
@@ -4445,7 +4453,7 @@ pleasure
 pledge
 plenty
 plot
-plough
+plow
 pluck
 plug
 plumber
@@ -4527,7 +4535,6 @@ powerful
 powerless
 practically
 practice
-practise
 praise
 pram
 prank
@@ -4628,7 +4635,6 @@ profit
 profound
 prognosis
 program
-programme
 programming
 progress
 project
@@ -4773,6 +4779,7 @@ ranger
 rank
 ransom
 rap
+rape
 rapid
 rapture
 rare
@@ -4800,9 +4807,9 @@ readiness
 reading
 ready
 real
-realise
 realistic
 reality
+realize
 really
 realm
 rear
@@ -5134,7 +5141,7 @@ sausage
 savage
 save
 saving
-savour
+savor
 saw
 say
 saying
@@ -5156,7 +5163,6 @@ scenario
 scene
 scenery
 scent
-sceptical
 schedule
 scheme
 scholar
@@ -5209,6 +5215,7 @@ secure
 security
 sedate
 sedative
+seduce
 see
 seed
 seem
@@ -5266,6 +5273,10 @@ several
 severe
 sew
 sewer
+sex
+sexual
+sexually
+sexy
 shabby
 shack
 shade
@@ -5385,6 +5396,7 @@ sixty
 size
 skating
 skeleton
+skeptical
 sketch
 ski
 skid
@@ -5756,7 +5768,7 @@ suicide
 suit
 suitcase
 suite
-sulphur
+sulfur
 sum
 summer
 summit
@@ -5949,7 +5961,7 @@ thankful
 thanksgiving
 that
 the
-theatre
+theater
 thee
 theft
 their
@@ -5973,6 +5985,7 @@ thief
 thieve
 thin
 thing
+thingy
 think
 thinking
 third
@@ -6024,6 +6037,7 @@ tin
 tint
 tiny
 tip
+tire
 tire
 tired
 tissue
@@ -6184,7 +6198,6 @@ type
 typical
 typist
 tyrant
-tyre
 ugly
 ulcer
 ultimate
@@ -6288,6 +6301,7 @@ upward
 urban
 urge
 urgent
+urine
 us
 usage
 use
@@ -6316,7 +6330,7 @@ van
 vandalism
 vanilla
 vanish
-vapour
+vapor
 variable
 variation
 variety
@@ -6463,6 +6477,7 @@ weather
 web
 website
 wedding
+wee
 weed
 week
 weekend
